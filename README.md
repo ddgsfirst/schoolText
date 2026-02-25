@@ -2,6 +2,14 @@
 
 생기부 PDF에서 원문을 추출하고, 레퍼런스 데이터와 함께 관리하는 백엔드 API.
 
+## 기술 스택
+
+- **Framework**: FastAPI
+- **DB**: PostgreSQL + SQLAlchemy ORM
+- **PDF 파싱**: pdfplumber
+- **YAML 파싱**: PyYAML
+- **서버**: Uvicorn
+
 ## 구조
 
 ```
@@ -94,7 +102,7 @@ pip install -r requirements.txt
 
 ```env
 REF_DATABASE_URL=postgresql://user:pass@host:5432/reference
-USER_DATABASE_URL=postgresql://user:pass@host:5432/client
+CLIENT_DATABASE_URL=postgresql://user:pass@host:5432/client
 ```
 
 ### 3. 실행
