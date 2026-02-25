@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     # 레퍼런스 DB: 사전 등록된 생기부 원문 + 평가 데이터
     REF_DATABASE_URL: str = "postgresql://postgres:postgres@localhost:5432/reference"
     # 클라이언트 DB: 클라이언트가 업로드한 생기부 + AI 생성 평가
-    USER_DATABASE_URL: str = "postgresql://postgres:postgres@localhost:5432/client"
+    CLIENT_DATABASE_URL: str = "postgresql://postgres:postgres@localhost:5432/client"
 
     # ── 파일 경로 ──
     # 레퍼런스 데이터 디렉토리 (YAML + PDF 업로드 저장)

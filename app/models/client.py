@@ -14,10 +14,10 @@
 from sqlalchemy import Column, Integer, String, Text, ForeignKey
 from sqlalchemy.orm import relationship
 
-from app.database import UserBase
+from app.database import ClientBase
 
 
-class UserStudent(UserBase):
+class UserStudent(ClientBase):
     """클라이언트 업로드 학생 기본 정보"""
     __tablename__ = "students"
 
@@ -35,7 +35,7 @@ class UserStudent(UserBase):
     behaviors = relationship("UserBehavior", back_populates="student", cascade="all, delete-orphan")
 
 
-class UserCareerHope(UserBase):
+class UserCareerHope(ClientBase):
     """클라이언트 학년별 희망분야"""
     __tablename__ = "career_hopes"
 
@@ -47,7 +47,7 @@ class UserCareerHope(UserBase):
     student = relationship("UserStudent", back_populates="career_hopes")
 
 
-class UserActivity(UserBase):
+class UserActivity(ClientBase):
     """
     클라이언트 창의적 체험활동상황
 
@@ -72,7 +72,7 @@ class UserActivity(UserBase):
     student = relationship("UserStudent", back_populates="activities")
 
 
-class UserSubject(UserBase):
+class UserSubject(ClientBase):
     """클라이언트 세부능력 및 특기사항"""
     __tablename__ = "subjects"
 
@@ -88,7 +88,7 @@ class UserSubject(UserBase):
     student = relationship("UserStudent", back_populates="subjects")
 
 
-class UserBehavior(UserBase):
+class UserBehavior(ClientBase):
     """클라이언트 행동특성 및 종합의견"""
     __tablename__ = "behaviors"
 

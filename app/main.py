@@ -13,14 +13,14 @@ API 문서:
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.database import ref_engine, user_engine, RefBase, UserBase
+from app.database import ref_engine, client_engine, RefBase, ClientBase
 from app.models import reference, client  # 테이블 생성을 위해 모델 임포트 필요
 from app.routers import reference as ref_router, client as client_router
 
 # ── 테이블 자동 생성 ──
 # 서버 시작 시 각 DB에 테이블이 없으면 자동으로 생성합니다.
 RefBase.metadata.create_all(bind=ref_engine)    # gongdo_ref 테이블 생성
-UserBase.metadata.create_all(bind=user_engine)  # gongdo 테이블 생성
+ClientBase.metadata.create_all(bind=client_engine)  # client 테이블 생성
 
 # ── FastAPI 앱 초기화 ──
 app = FastAPI(
