@@ -1,7 +1,7 @@
 """
 레퍼런스 DB 모델
 
-사전 등록된 생기부 원문과 testone 평가 데이터를 함께 저장합니다.
+사전 등록된 생기부 원문과 평가(레퍼런스) 데이터를 함께 저장합니다.
 각 테이블에 original_text(생기부 원문)와 evaluation/reason(평가 데이터)이 공존합니다.
 
 테이블 구조:
@@ -53,8 +53,8 @@ class RefActivity(RefBase):
     레퍼런스 창의적 체험활동상황
 
     original_text: PDF에서 추출한 생기부 원문
-    evaluation:    testone YAML의 평가내용
-    reason:        testone YAML의 이유
+    evaluation:    YAML의 평가내용
+    reason:        YAML의 이유
     """
     __tablename__ = "ref_activities"
 
@@ -66,7 +66,7 @@ class RefActivity(RefBase):
 
     # 생기부 원문 (PDF에서 추출)
     original_text = Column(Text, comment="생기부 원문 텍스트")
-    # 평가 데이터 (testone YAML에서 로드)
+    # 평가 데이터 (YAML에서 로드)
     evaluation = Column(Text, comment="평가내용")
     reason = Column(Text, comment="이유")
 
@@ -78,8 +78,8 @@ class RefSubject(RefBase):
     레퍼런스 세부능력 및 특기사항
 
     original_text: PDF에서 추출한 세특 원문
-    evaluation:    testone YAML의 평가내용
-    reason:        testone YAML의 이유
+    evaluation:    YAML의 평가내용
+    reason:        YAML의 이유
     """
     __tablename__ = "ref_subjects"
 
@@ -90,7 +90,7 @@ class RefSubject(RefBase):
 
     # 생기부 원문 (PDF에서 추출)
     original_text = Column(Text, comment="세특 원문 텍스트")
-    # 평가 데이터 (testone YAML에서 로드)
+    # 평가 데이터 (YAML에서 로드)
     evaluation = Column(Text, comment="평가내용")
     reason = Column(Text, comment="이유")
 
@@ -102,8 +102,8 @@ class RefBehavior(RefBase):
     레퍼런스 행동특성 및 종합의견
 
     original_text: PDF에서 추출한 행특 원문
-    evaluation:    testone YAML의 평가내용
-    reason:        testone YAML의 이유
+    evaluation:    YAML의 평가내용
+    reason:        YAML의 이유
     """
     __tablename__ = "ref_behaviors"
 
@@ -113,7 +113,7 @@ class RefBehavior(RefBase):
 
     # 생기부 원문 (PDF에서 추출)
     original_text = Column(Text, comment="행특 원문 텍스트")
-    # 평가 데이터 (testone YAML에서 로드)
+    # 평가 데이터 (YAML에서 로드)
     evaluation = Column(Text, comment="평가내용")
     reason = Column(Text, comment="이유")
 

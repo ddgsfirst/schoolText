@@ -7,7 +7,3 @@ dist/
 build/
 .venv/
 venv/
-_cells.json
-_tables.json
-_r.txt
-_test.py

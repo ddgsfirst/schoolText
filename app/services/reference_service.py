@@ -1,7 +1,7 @@
 """
 레퍼런스 데이터 저장 서비스
 
-생기부 PDF 원문과 testone YAML 평가 데이터를 레퍼런스 DB(reference)에 저장합니다.
+생기부 PDF 원문과 YAML 평가 데이터를 레퍼런스 DB(reference)에 저장합니다.
 PDF와 YAML은 같은 파일명(s1.pdf ↔ s1.yaml)으로 대응됩니다.
 PDF가 없는 경우 YAML만 저장하며, original_text 컬럼은 비워둡니다.
 """
@@ -20,20 +20,15 @@ from app.parser.pdf_parser import parse_pdf
 def _pdf_경로_찾기(yaml_filename: str) -> Path | None:
     """
     YAML 파일명에 대응하는 PDF 파일을 찾습니다.
-    예: 's1.yaml' → 'data/pdf/s1.pdf' 또는 './s1.pdf'
-
-    검색 순서: data/pdf/ → PDF_DIR (레거시)
+    예: 's1.yaml' → 'data/pdf/s1.pdf'
     """
     stem = Path(yaml_filename).stem  # 'sX'
 
-    # 1) data/pdf/ 디렉토리
     data_pdf = Path(settings.DATA_DIR) / "pdf" / f"{stem}.pdf"
     if data_pdf.exists():
         return data_pdf
 
-    # 2) 레거시: PDF_DIR
-    legacy_pdf = Path(settings.PDF_DIR) / f"{stem}.pdf"
-    return legacy_pdf if legacy_pdf.exists() else None
+    return None
 
 
 def _원문_인덱스_생성(pdf_data: dict | None) -> dict:
@@ -91,7 +86,7 @@ def 레퍼런스_저장(db: Session, yaml_filepath: Path) -> RefStudent:
 
     Args:
         db:            레퍼런스 DB 세션
-        yaml_filepath: testone YAML 파일 경로
+        yaml_filepath: 레퍼런스 YAML 파일 경로
 
     Returns:
         저장된 RefStudent 인스턴스

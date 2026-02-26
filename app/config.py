@@ -2,8 +2,8 @@
 공도 서비스 환경 설정
 
 환경변수 또는 .env 파일에서 설정을 로드합니다.
-- REF_DATABASE_URL: 레퍼런스 DB (생기부 원문 + testone 평가)
-- USER_DATABASE_URL: 사용자 DB (업로드된 생기부 + AI 평가)
+- REF_DATABASE_URL: 레퍼런스 DB (생기부 원문 + 레퍼런스 평가)
+- CLIENT_DATABASE_URL: 클라이언트 DB (업로드된 생기부 + AI 평가)
 """
 from pydantic_settings import BaseSettings
 
@@ -18,10 +18,6 @@ class Settings(BaseSettings):
     # ── 파일 경로 ──
     # 레퍼런스 데이터 디렉토리 (YAML + PDF 업로드 저장)
     DATA_DIR: str = "./data"
-
-    # 레거시: 기존 testone 디렉토리 (호환성 유지)
-    TESTONE_DIR: str = "./testone"
-    PDF_DIR: str = "."
 
     class Config:
         env_file = ".env"

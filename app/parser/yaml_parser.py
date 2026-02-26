@@ -1,7 +1,8 @@
 """
-YAML 평가 파일 파서 (testone 디렉토리)
+\"\"\"
+YAML 평가 파일 파서
 
-testone/*.yaml 파일을 읽어 창체/세특/행특 평가 데이터를 구조화합니다.
+YAML 파일을 읽어 창체/세특/행특 평가 데이터를 구조화합니다.
 YAML 파일 구조:
     학생정보: 성명, 학교, 학과, 졸업연도, 희망분야
     창의적_체험활동상황: 자율/동아리/진로 × 학년 × 평가내용/이유
@@ -33,7 +34,7 @@ def _비공개인지(value) -> bool:
 
 def parse_yaml(filepath: str | Path) -> dict:
     """
-    testone YAML 파일을 파싱하여 구조화된 딕셔너리로 반환합니다.
+    YAML 파일을 파싱하여 구조화된 딕셔너리로 반환합니다.
 
     Args:
         filepath: YAML 파일 경로
